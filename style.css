@@ -22,3 +22,9 @@ body{
 #CPU > h1{
     color: red;
 }
+
+#svg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

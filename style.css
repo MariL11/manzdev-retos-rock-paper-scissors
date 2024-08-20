@@ -28,3 +28,9 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+.borde .scissors-path {
+    stroke: green;       /* Color del borde */
+    stroke-width: 2px;   /* Grosor del borde */
+    fill: none;          /* Asegúrate de que el relleno esté en 'none' si solo deseas un borde */
+}

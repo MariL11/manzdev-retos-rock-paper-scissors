@@ -29,6 +29,17 @@ body{
     align-items: center;
 }
 
+
+#resultado{
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: xx-large;
+    color: white;
+    text-decoration:underline;
+}
+
 .borde .scissors-path {
     stroke: green;       /* Color del borde */
     stroke-width: 2px;   /* Grosor del borde */

@@ -19,7 +19,8 @@
       <path d="m1 0-3 3h-2l3-3-3-3h2z" fill="green"/>
     </marker>
   </defs>
-  <g transform="translate(-13.91 0)">
+
+  <g transform="translate(-13.91 -10)">
 
     <path id="✂️-📄" class="arrow" d="m45 123 80 0" marker-end="url(#marker-✂️-📄)" stroke="green" stroke-width="1.25"/>
     <path id="🗿-✂️" class="arrow" d="m70 65 -40 40" marker-end="url(#marker-🗿-✂️)" stroke="green" stroke-width="1.25"/>

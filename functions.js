@@ -1,14 +1,21 @@
 let counter1 = 0;
 let counter2 = 0;
+let intervalId;
 
 window.addEventListener('load', startGame, false);
 
 function startGame() {
     let icons = document.getElementById("icons");
+    let restartButton = document.getElementById("restart");
 
     // Verificar si el SVG se ha cargado correctamente
     if (icons) {
-        let intervalId = setInterval(function() {
+
+        if (intervalId) {
+            clearInterval(intervalId);
+        }
+
+        intervalId = setInterval(function() {
             let iconsDoc = icons.contentDocument;
 
             if (iconsDoc) {
@@ -19,24 +26,36 @@ function startGame() {
                 let page = iconsDoc.getElementById("📄");
 
                 if (scissors && moai && page) { // Verificar que todos los elementos estén presentes
+                    
+
                     scissors.addEventListener("click", function() {
                         deleteStyle(scissors, moai, page);
-                        scissors.style.stroke = "green";       
+                        scissors.style.stroke = "darkblue";       
                         randomFigure(scissors, moai, page);
                     });
 
                     moai.addEventListener("click", function() {
                         deleteStyle(scissors, moai, page);
-                        moai.style.stroke = "green";       
+                        moai.style.stroke = "darkblue";       
                         randomFigure(scissors, moai, page);
                     });
 
                     page.addEventListener("click", function() {
                         deleteStyle(scissors, moai, page);
-                        page.style.stroke = "green";       
+                        page.style.stroke = "darkblue";       
                         randomFigure(scissors, moai, page);
                     });
+
+                    if(restartButton){
+                        restartButton.addEventListener("click", function() {
+                            restartGame();
+                            deleteStyle(scissors, moai, page);
+                        });
+                    }
+
                 }
+                
+                
             }
         }, 100); 
     } else {
@@ -64,21 +83,21 @@ function randomFigure(scissors, moai, page) {
     }
 
     // Verifica si la CPU ganó
-    if ((selectedFigureCPU === "🗿" && scissors.style.stroke === "green") || 
-        (selectedFigureCPU === "📄" && moai.style.stroke === "green") ||
-        (selectedFigureCPU === "✂️" && page.style.stroke === "green")) {
+    if ((selectedFigureCPU === "🗿" && scissors.style.stroke === "darkblue") || 
+        (selectedFigureCPU === "📄" && moai.style.stroke === "darkblue") ||
+        (selectedFigureCPU === "✂️" && page.style.stroke === "darkblue")) {
         document.getElementById("pointsCPU").textContent = ++counter2;
-        document.getElementById("resultado").textContent = "CPU has won";
+        document.getElementById("result").textContent = "CPU has won";
 
     // Verifica si el jugador ganó
-    }else if ((selectedFigureCPU === "📄" && scissors.style.stroke === "green") || 
-        (selectedFigureCPU === "✂️" && moai.style.stroke === "green") ||
-        (selectedFigureCPU === "🗿" && page.style.stroke === "green")) {
+    }else if ((selectedFigureCPU === "📄" && scissors.style.stroke === "darkblue") || 
+        (selectedFigureCPU === "✂️" && moai.style.stroke === "darkblue") ||
+        (selectedFigureCPU === "🗿" && page.style.stroke === "darkblue")) {
         document.getElementById("pointsPlayer").textContent = ++counter1;
-        document.getElementById("resultado").textContent = "Player has won";
+        document.getElementById("result").textContent = "Player has won";
 
     }else{
-        document.getElementById("resultado").textContent = "Draw";
+        document.getElementById("result").textContent = "Draw";
     }
 }
 
@@ -88,3 +107,17 @@ function deleteStyle (scissors, moai, page){
     moai.style.removeProperty('stroke');
     page.style.removeProperty('stroke');
 }
+
+/*Reiniciar juego*/
+function restartGame(){
+
+    counter1 = 0;
+    counter2 = 0;
+
+    document.getElementById("pointsPlayer").textContent = counter1;
+    document.getElementById("pointsCPU").textContent = counter2;
+    document.getElementById("result").textContent = "Select a figure";
+
+
+}
+

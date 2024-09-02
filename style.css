@@ -83,7 +83,7 @@ button{
 @media screen and (max-width: 750px) {
     #scoreboard{
         flex-direction: column;
-        margin-top: 1rem;
+        margin-top: 0.8rem;
     }
 
     #scoreboard > div > p{
@@ -97,7 +97,7 @@ button{
     }
 
     button{
-        margin-block: 3rem;
+        margin-block: 2.5rem;
         width: 70%;
     }
 
@@ -107,6 +107,7 @@ button{
 
     #result{
         margin: 5%;
+        margin-top: 0;
         font-size: x-large;
     }
 }
